@@ -20,6 +20,22 @@
     return nowAvailable;
 }
 
+- (NSString*)stringFromColorsAvailable {
+    
+    NSString* colors = @"";
+    
+    for (int i = 0; i < [self.colorsAvailable count]; i++) {
+        NSString* color = [self.colorsAvailable objectAtIndex:i];
+        if (0 == i) {
+            colors = [colors stringByAppendingString:color];
+        } else {
+            colors = [colors stringByAppendingFormat:@" & %@ Colors Available", color];
+        }
+    }
+    
+    return colors;
+}
+
 // Accessor/Mutator Methods (Not sure why we are having to write these manually when @synthesize does it for us??)
 - (void)setCc:(NSString *)bikeCc {
     cc = bikeCc;

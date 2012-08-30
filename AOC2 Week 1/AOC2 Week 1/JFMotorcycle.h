@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSNumber       * totalAvailable;
 
 - (NSNumber*)updateStockWithSoldCount:(int)sold;
+- (NSString*)stringFromColorsAvailable;
 
 // Accessor/Mutator Methods (Not sure why we are having to write these manually when @synthesize does it for us??)
 - (void)setCc:(NSString *)bikeCc;

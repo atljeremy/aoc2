@@ -12,11 +12,22 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *myMotorcyclePic;
 
+// Ducati
 @property (weak, nonatomic) IBOutlet UILabel *ducatiOne;
 @property (weak, nonatomic) IBOutlet UILabel *ducatiTwo;
+@property (weak, nonatomic) IBOutlet UILabel *ducatiThree;
+@property (weak, nonatomic) IBOutlet UILabel *ducatiFour;
+
+// Honda
 @property (weak, nonatomic) IBOutlet UILabel *hondaOne;
 @property (weak, nonatomic) IBOutlet UILabel *hondaTwo;
+@property (weak, nonatomic) IBOutlet UILabel *hondaThree;
+@property (weak, nonatomic) IBOutlet UILabel *hondaFour;
+
+// Suzuki
 @property (weak, nonatomic) IBOutlet UILabel *suzukiOne;
 @property (weak, nonatomic) IBOutlet UILabel *suzukiTwo;
+@property (weak, nonatomic) IBOutlet UILabel *suzukiThree;
+@property (weak, nonatomic) IBOutlet UILabel *suzukiFour;
 
 @end

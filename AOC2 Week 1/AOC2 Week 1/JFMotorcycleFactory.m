@@ -21,30 +21,36 @@ static NSString* const kSuzukiGSXR    = @"jfmotorcyclesuzukigsxr";
     
     if ([type isEqualToString:kDucatiMonster]) {
         motorcycle = [[JFMotorcycleDucatiMonster alloc] init];
-        [motorcycle setCc:@"1000 cc's"];
+        [motorcycle setCc:@"1000cc"];
         [motorcycle setMake:@"Ducati"];
         [motorcycle setModel:@"Monster"];
         [motorcycle setYear:[NSNumber numberWithInteger:2012]];
         [motorcycle setTotalAvailable:[NSNumber numberWithInteger:10]];
         [motorcycle setColorsAvailable:[NSMutableArray arrayWithObjects:@"Red", @"Black", nil]];
+        [(JFMotorcycleDucatiMonster*)motorcycle setHasDucatiWarrenty:[NSNumber numberWithBool:YES]];
+        [(JFMotorcycleDucatiMonster*)motorcycle setDucatiWarrentyDescription:@"1 Year FREE Parts/Service"];
         
     } else if([type isEqualToString:kHondaCBR]) {
         motorcycle = [[JFMotorcycleHondaCBR alloc] init];
-        [motorcycle setCc:@"600 cc's"];
+        [motorcycle setCc:@"600cc"];
         [motorcycle setMake:@"Honda"];
         [motorcycle setModel:@"CBR"];
         [motorcycle setYear:[NSNumber numberWithInteger:2010]];
-        [motorcycle setTotalAvailable:[NSNumber numberWithInteger:8]];
+        [motorcycle setTotalAvailable:[NSNumber numberWithInteger:13]];
         [motorcycle setColorsAvailable:[NSMutableArray arrayWithObjects:@"Silver", @"Blue", nil]];
+        [(JFMotorcycleHondaCBR*)motorcycle setHasHondaWarrenty:[NSNumber numberWithBool:YES]];
+        [(JFMotorcycleHondaCBR*)motorcycle setHondaWarrentyDescription:@"50,000 mile powertrain"];
         
     } else if ([type isEqualToString:kSuzukiGSXR]) {
         motorcycle = [[JFMotorcycleSuzukiGSXR alloc] init];
-        [motorcycle setCc:@"750 cc's"];
+        [motorcycle setCc:@"750cc"];
         [motorcycle setMake:@"Suzuki"];
         [motorcycle setModel:@"GSXR"];
         [motorcycle setYear:[NSNumber numberWithInteger:2011]];
         [motorcycle setTotalAvailable:[NSNumber numberWithInteger:6]];
         [motorcycle setColorsAvailable:[NSMutableArray arrayWithObjects:@"Yellow", @"White", nil]];
+        [(JFMotorcycleSuzukiGSXR*)motorcycle setHasSuzukiWarrenty:[NSNumber numberWithBool:FALSE]];
+        [(JFMotorcycleSuzukiGSXR*)motorcycle setSuzukiWarrentyDescription:@"No Warrenty Available"];
         
     } else {
         NSAssert(NO, @"Could not instantiate object of type: %@", type);
