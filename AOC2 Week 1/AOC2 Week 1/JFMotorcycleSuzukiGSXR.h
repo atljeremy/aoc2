@@ -10,4 +10,7 @@
 
 @interface JFMotorcycleSuzukiGSXR : JFMotorcycle
 
+@property (nonatomic, strong) NSNumber* hasSuzukiWarrenty;
+@property (nonatomic, strong) NSString* suzukiWarrentyDescription;
+
 @end

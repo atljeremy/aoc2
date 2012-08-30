@@ -9,9 +9,9 @@
 #import "JFMotorcycle.h"
 
 @implementation JFMotorcycle
-@synthesize cc, colorsAvailable, make, model, year;
+@synthesize cc, colorsAvailable, make, model, year, totalAvailable;
 
-- (NSNumber*)updateStockeWithSoldCount:(int)sold {
+- (NSNumber*)updateStockWithSoldCount:(int)sold {
     
     double totalSold          = [[NSNumber numberWithInt:sold] doubleValue];
     double currentlyAvailable = [self.totalAvailable doubleValue];
@@ -22,42 +22,42 @@
 
 // Accessor/Mutator Methods (Not sure why we are having to write these manually when @synthesize does it for us??)
 - (void)setCc:(NSString *)bikeCc {
-    self.cc = bikeCc;
+    cc = bikeCc;
 }
 - (NSString*)getCc {
     return self.cc;
 }
 
 - (void)setYear:(NSNumber *)bikeYear {
-    self.year = bikeYear;
+    year = bikeYear;
 }
 - (NSNumber*)getYear {
     return self.year;
 }
 
 - (void)setMake:(NSString *)bikeMake {
-    self.make = bikeMake;
+    make = bikeMake;
 }
 - (NSString*)getMake {
     return self.make;
 }
 
 - (void)setModel:(NSString *)bikeModel {
-    self.model = bikeModel;
+    model = bikeModel;
 }
 - (NSString*)getModel {
     return self.model;
 }
 
 - (void)setColorsAvailable:(NSMutableArray *)bikeColorsAvailable {
-    self.colorsAvailable = bikeColorsAvailable;
+    colorsAvailable = bikeColorsAvailable;
 }
 - (NSMutableArray*)getColorsAvailable {
     return self.colorsAvailable;
 }
 
 - (void)setTotalAvailable:(NSNumber *)bikeTotalAvailable {
-    self.totalAvailable = bikeTotalAvailable;
+    totalAvailable = bikeTotalAvailable;
 }
 - (NSNumber*)getTotalAvailable {
     return self.totalAvailable;

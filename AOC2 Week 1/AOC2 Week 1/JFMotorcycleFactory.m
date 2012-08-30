@@ -9,6 +9,8 @@
 #import "JFMotorcycleFactory.h"
 
 static NSString* const kDucatiMonster = @"jfmotorcycleducatimonster";
+static NSString* const kHondaCBR      = @"jfmotorcyclehondacbr";
+static NSString* const kSuzukiGSXR    = @"jfmotorcyclesuzukigsxr";
 
 @implementation JFMotorcycleFactory
 
@@ -19,10 +21,31 @@ static NSString* const kDucatiMonster = @"jfmotorcycleducatimonster";
     
     if ([type isEqualToString:kDucatiMonster]) {
         motorcycle = [[JFMotorcycleDucatiMonster alloc] init];
-    } else if([type isEqualToString:kDucatiMonster]) {
+        [motorcycle setCc:@"1000 cc's"];
+        [motorcycle setMake:@"Ducati"];
+        [motorcycle setModel:@"Monster"];
+        [motorcycle setYear:[NSNumber numberWithInteger:2012]];
+        [motorcycle setTotalAvailable:[NSNumber numberWithInteger:10]];
+        [motorcycle setColorsAvailable:[NSMutableArray arrayWithObjects:@"Red", @"Black", nil]];
+        
+    } else if([type isEqualToString:kHondaCBR]) {
         motorcycle = [[JFMotorcycleHondaCBR alloc] init];
-    } else if ([type isEqualToString:kDucatiMonster]) {
+        [motorcycle setCc:@"600 cc's"];
+        [motorcycle setMake:@"Honda"];
+        [motorcycle setModel:@"CBR"];
+        [motorcycle setYear:[NSNumber numberWithInteger:2010]];
+        [motorcycle setTotalAvailable:[NSNumber numberWithInteger:8]];
+        [motorcycle setColorsAvailable:[NSMutableArray arrayWithObjects:@"Silver", @"Blue", nil]];
+        
+    } else if ([type isEqualToString:kSuzukiGSXR]) {
         motorcycle = [[JFMotorcycleSuzukiGSXR alloc] init];
+        [motorcycle setCc:@"750 cc's"];
+        [motorcycle setMake:@"Suzuki"];
+        [motorcycle setModel:@"GSXR"];
+        [motorcycle setYear:[NSNumber numberWithInteger:2011]];
+        [motorcycle setTotalAvailable:[NSNumber numberWithInteger:6]];
+        [motorcycle setColorsAvailable:[NSMutableArray arrayWithObjects:@"Yellow", @"White", nil]];
+        
     } else {
         NSAssert(NO, @"Could not instantiate object of type: %@", type);
     }

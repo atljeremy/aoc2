@@ -10,4 +10,7 @@
 
 @interface JFMotorcycleHondaCBR : JFMotorcycle
 
+@property (nonatomic, strong) NSNumber* hasHondaWarrenty;
+@property (nonatomic, strong) NSString* hondaWarrentyDescription;
+
 @end

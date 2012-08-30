@@ -10,4 +10,7 @@
 
 @interface JFMotorcycleDucatiMonster : JFMotorcycle
 
+@property (nonatomic, strong) NSNumber* hasDucatiWarrenty;
+@property (nonatomic, strong) NSString* ducatiWarrentyDescription;
+
 @end

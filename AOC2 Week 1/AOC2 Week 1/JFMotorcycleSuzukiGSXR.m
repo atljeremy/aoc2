@@ -9,5 +9,6 @@
 #import "JFMotorcycleSuzukiGSXR.h"
 
 @implementation JFMotorcycleSuzukiGSXR
+@synthesize suzukiWarrentyDescription, hasSuzukiWarrenty;
 
 @end

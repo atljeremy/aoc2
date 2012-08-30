@@ -9,5 +9,6 @@
 #import "JFMotorcycleDucatiMonster.h"
 
 @implementation JFMotorcycleDucatiMonster
+@synthesize ducatiWarrentyDescription, hasDucatiWarrenty;
 
 @end

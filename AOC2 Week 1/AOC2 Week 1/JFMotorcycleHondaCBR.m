@@ -9,5 +9,6 @@
 #import "JFMotorcycleHondaCBR.h"
 
 @implementation JFMotorcycleHondaCBR
+@synthesize hondaWarrentyDescription, hasHondaWarrenty;
 
 @end

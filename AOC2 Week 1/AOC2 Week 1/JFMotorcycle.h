@@ -8,9 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JFMotorcycle : NSObject {
-    BOOL hasWarrenty;
-}
+@interface JFMotorcycle : NSObject
 
 @property (nonatomic, strong) NSString       * cc;
 @property (nonatomic, strong) NSNumber       * year;
@@ -19,7 +17,7 @@
 @property (nonatomic, strong) NSMutableArray * colorsAvailable;
 @property (nonatomic, strong) NSNumber       * totalAvailable;
 
-- (NSNumber*)updateStockeWithSoldCount:(int)sold;
+- (NSNumber*)updateStockWithSoldCount:(int)sold;
 
 // Accessor/Mutator Methods (Not sure why we are having to write these manually when @synthesize does it for us??)
 - (void)setCc:(NSString *)bikeCc;
