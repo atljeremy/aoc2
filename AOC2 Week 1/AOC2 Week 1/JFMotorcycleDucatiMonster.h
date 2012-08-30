@@ -10,7 +10,13 @@
 
 @interface JFMotorcycleDucatiMonster : JFMotorcycle
 
-@property (nonatomic, strong) NSNumber* hasDucatiWarrenty;
-@property (nonatomic, strong) NSString* ducatiWarrentyDescription;
+@property (nonatomic, strong, getter = getHasDucatiWarrenty, setter = setHasDucatiWarrenty:) NSNumber* hasDucatiWarrenty;
+@property (nonatomic, strong, getter = getDucatiWarrentyDescription, setter = setDucatiWarrentyDescription:) NSString* ducatiWarrentyDescription;
+
+- (void)setHasDucatiWarrenty:(NSNumber *)yesno;
+- (void)setDucatiWarrentyDescription:(NSString *)description;
+
+- (NSNumber*)getHasDucatiWarrenty;
+- (NSString*)getDucatiWarrentyDescription;
 
 @end

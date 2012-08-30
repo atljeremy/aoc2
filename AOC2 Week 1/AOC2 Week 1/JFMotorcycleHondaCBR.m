@@ -11,4 +11,20 @@
 @implementation JFMotorcycleHondaCBR
 @synthesize hondaWarrentyDescription, hasHondaWarrenty;
 
+- (void)setHasHondaWarrenty:(NSNumber *)yesno {
+    hasHondaWarrenty = yesno;
+}
+
+- (void)setHondaWarrentyDescription:(NSString *)description {
+    hondaWarrentyDescription = description;
+}
+
+- (NSNumber*)getHasHondaWarrenty {
+    return hasHondaWarrenty;
+}
+
+- (NSString*)getHondaWarrentyDescription {
+    return hondaWarrentyDescription;
+}
+
 @end

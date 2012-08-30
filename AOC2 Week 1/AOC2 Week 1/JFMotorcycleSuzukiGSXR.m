@@ -11,4 +11,20 @@
 @implementation JFMotorcycleSuzukiGSXR
 @synthesize suzukiWarrentyDescription, hasSuzukiWarrenty;
 
+- (void)setHasSuzukiWarrenty:(NSNumber *)yesno {
+    hasSuzukiWarrenty = yesno;
+}
+
+- (void)setSuzukiWarrentyDescription:(NSString *)description {
+    suzukiWarrentyDescription = description;
+}
+
+- (NSNumber*)getHasSuzukiWarrenty {
+    return hasSuzukiWarrenty;
+}
+
+- (NSString*)getSuzukiWarrentyDescription {
+    return suzukiWarrentyDescription;
+}
+
 @end

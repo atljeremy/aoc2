@@ -11,4 +11,20 @@
 @implementation JFMotorcycleDucatiMonster
 @synthesize ducatiWarrentyDescription, hasDucatiWarrenty;
 
+- (void)setHasDucatiWarrenty:(NSNumber *)yesno {
+    hasDucatiWarrenty = yesno;
+}
+
+- (void)setDucatiWarrentyDescription:(NSString *)description {
+    ducatiWarrentyDescription = description;
+}
+
+- (NSNumber*)getHasDucatiWarrenty {
+    return hasDucatiWarrenty;
+}
+
+- (NSString*)getDucatiWarrentyDescription {
+    return ducatiWarrentyDescription;
+}
+
 @end

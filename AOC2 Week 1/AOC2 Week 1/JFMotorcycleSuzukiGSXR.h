@@ -10,7 +10,13 @@
 
 @interface JFMotorcycleSuzukiGSXR : JFMotorcycle
 
-@property (nonatomic, strong) NSNumber* hasSuzukiWarrenty;
-@property (nonatomic, strong) NSString* suzukiWarrentyDescription;
+@property (nonatomic, strong, getter = getHasSuzukiWarrenty, setter = setHasSuzukiWarrenty:) NSNumber* hasSuzukiWarrenty;
+@property (nonatomic, strong, getter = getSuzukiWarrentyDescription, setter = setSuzukiWarrentyDescription:) NSString* suzukiWarrentyDescription;
+
+- (void)setHasSuzukiWarrenty:(NSNumber *)yesno;
+- (void)setSuzukiWarrentyDescription:(NSString *)description;
+
+- (NSNumber*)getHasSuzukiWarrenty;
+- (NSString*)getSuzukiWarrentyDescription;
 
 @end
