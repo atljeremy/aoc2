@@ -11,6 +11,11 @@
 @implementation JFMotorcycleSuzukiGSXR
 @synthesize suzukiWarrentyDescription, hasSuzukiWarrenty;
 
+// Overridden from superlass (JSMotorcyle)
+- (NSNumber*)updateStockWithSoldCount:(int)sold {
+    // Need to do something unique for this subclass
+}
+
 - (void)setHasSuzukiWarrenty:(NSNumber *)yesno {
     hasSuzukiWarrenty = yesno;
 }

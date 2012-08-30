@@ -11,6 +11,11 @@
 @implementation JFMotorcycleDucatiMonster
 @synthesize ducatiWarrentyDescription, hasDucatiWarrenty;
 
+// Overridden from superlass (JSMotorcyle)
+- (NSNumber*)updateStockWithSoldCount:(int)sold {
+    // Need to do something unique for this subclass
+}
+
 - (void)setHasDucatiWarrenty:(NSNumber *)yesno {
     hasDucatiWarrenty = yesno;
 }
