@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FDB607115EEFE4900241CD2 /* JFMotorcycleFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FDB607015EEFE4900241CD2 /* JFMotorcycleFactory.m */; };
 		3FE59EE215EC5C17002D6E22 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE59EE115EC5C17002D6E22 /* UIKit.framework */; };
 		3FE59EE415EC5C17002D6E22 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE59EE315EC5C17002D6E22 /* Foundation.framework */; };
 		3FE59EE615EC5C17002D6E22 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FE59EE515EC5C17002D6E22 /* CoreGraphics.framework */; };
@@ -22,6 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3FDB606F15EEFE4900241CD2 /* JFMotorcycleFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFMotorcycleFactory.h; sourceTree = "<group>"; };
+		3FDB607015EEFE4900241CD2 /* JFMotorcycleFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFMotorcycleFactory.m; sourceTree = "<group>"; };
 		3FE59EDD15EC5C17002D6E22 /* AOC2 Week 1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AOC2 Week 1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FE59EE115EC5C17002D6E22 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3FE59EE315EC5C17002D6E22 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -122,6 +125,8 @@
 				3FE59F0615EC5CDB002D6E22 /* JFMotorcycleDucatiMonster.m */,
 				3FE59F0815EC5D09002D6E22 /* JFMotorcycleSuzukiGSXR.h */,
 				3FE59F0915EC5D09002D6E22 /* JFMotorcycleSuzukiGSXR.m */,
+				3FDB606F15EEFE4900241CD2 /* JFMotorcycleFactory.h */,
+				3FDB607015EEFE4900241CD2 /* JFMotorcycleFactory.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 				3FE59F0415EC5CBC002D6E22 /* JFMotorcycleHondaCBR.m in Sources */,
 				3FE59F0715EC5CDB002D6E22 /* JFMotorcycleDucatiMonster.m in Sources */,
 				3FE59F0A15EC5D09002D6E22 /* JFMotorcycleSuzukiGSXR.m in Sources */,
+				3FDB607115EEFE4900241CD2 /* JFMotorcycleFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +317,7 @@
 				3FE59EFD15EC5C17002D6E22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
