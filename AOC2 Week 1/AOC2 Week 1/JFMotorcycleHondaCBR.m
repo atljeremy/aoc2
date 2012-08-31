@@ -13,7 +13,17 @@
 
 // Overridden from superlass (JSMotorcyle)
 - (NSNumber*)updateStockWithSoldCount:(int)sold {
-    // Need to do something unique for this subclass
+    
+    // YES! We just had a guy and 3 friends all buy a new Honda CBR at the last minute!
+    // We've better subtract those bikes from our inventory ASAP!
+    int lastMinuteSale = 4;
+    
+    double totalSold          = [[NSNumber numberWithInt:sold] doubleValue] + lastMinuteSale;
+    double currentlyAvailable = [self.totalAvailable doubleValue];
+    NSNumber * nowAvailable   = [NSNumber numberWithDouble:currentlyAvailable - totalSold];
+    
+    return nowAvailable;
+    
 }
 
 - (void)setHasHondaWarrenty:(NSNumber *)yesno {

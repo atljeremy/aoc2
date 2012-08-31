@@ -13,6 +13,7 @@
 @property (nonatomic, strong, getter = getHasSuzukiWarrenty, setter = setHasSuzukiWarrenty:) NSNumber* hasSuzukiWarrenty;
 @property (nonatomic, strong, getter = getSuzukiWarrentyDescription, setter = setSuzukiWarrentyDescription:) NSString* suzukiWarrentyDescription;
 
+// Overridden Accessor/Mutator Methods
 - (void)setHasSuzukiWarrenty:(NSNumber *)yesno;
 - (void)setSuzukiWarrentyDescription:(NSString *)description;
 

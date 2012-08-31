@@ -13,7 +13,16 @@
 
 // Overridden from superlass (JSMotorcyle)
 - (NSNumber*)updateStockWithSoldCount:(int)sold {
-    // Need to do something unique for this subclass
+    
+    // Oh no! We were robbed! We lost 5 Ducati Monsters!
+    int stolenBikes = 5;
+    
+    double totalSold          = [[NSNumber numberWithInt:sold] doubleValue];
+    double currentlyAvailable = [self.totalAvailable doubleValue] - stolenBikes;
+    NSNumber * nowAvailable   = [NSNumber numberWithDouble:currentlyAvailable - totalSold];
+    
+    return nowAvailable;
+    
 }
 
 - (void)setHasDucatiWarrenty:(NSNumber *)yesno {

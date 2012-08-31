@@ -46,7 +46,7 @@
     // class and the class itself.
     JFMotorcycleDucatiMonster* ducatiMoster = (JFMotorcycleDucatiMonster*)[[JFMotorcycleFactory sharedInstance] instantiateMotorcycleOfType:[NSStringFromClass([JFMotorcycleDucatiMonster class]) lowercaseString]];
     
-    self.ducatiOne.text = [NSString stringWithFormat:@"%@ %@ %@ %@ %@'s Available",
+    self.ducatiOne.text = [NSString stringWithFormat:@"%@ - %@ %@ %@ %@'s Available",
                            [ducatiMoster updateStockWithSoldCount:3],
                            ducatiMoster.getYear,
                            ducatiMoster.getCc,
@@ -62,7 +62,7 @@
     // class and the class itself.
     JFMotorcycleHondaCBR* hondaCBR = (JFMotorcycleHondaCBR*)[[JFMotorcycleFactory sharedInstance] instantiateMotorcycleOfType:[NSStringFromClass([JFMotorcycleHondaCBR class]) lowercaseString]];
     
-    self.hondaOne.text = [NSString stringWithFormat:@"%@ %@ %@ %@ %@'s Available",
+    self.hondaOne.text = [NSString stringWithFormat:@"%@ - %@ %@ %@ %@'s Available",
                           [hondaCBR updateStockWithSoldCount:1],
                           hondaCBR.getYear,
                           hondaCBR.getCc,
@@ -79,7 +79,7 @@
     // class and the class itself.
     JFMotorcycleSuzukiGSXR* suzukiGSXR = (JFMotorcycleSuzukiGSXR*)[[JFMotorcycleFactory sharedInstance] instantiateMotorcycleOfType:[NSStringFromClass([JFMotorcycleSuzukiGSXR class]) lowercaseString]];
     
-    self.suzukiOne.text = [NSString stringWithFormat:@"%@ %@ %@ %@ %@'s Available",
+    self.suzukiOne.text = [NSString stringWithFormat:@"%@ - %@ %@ %@ %@'s Available",
                            [suzukiGSXR updateStockWithSoldCount:5],
                            suzukiGSXR.getYear,
                            suzukiGSXR.getCc,

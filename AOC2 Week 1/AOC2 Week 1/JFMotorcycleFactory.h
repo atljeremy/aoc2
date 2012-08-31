@@ -14,7 +14,11 @@
 
 @interface JFMotorcycleFactory : NSObject
 
+// Used to instantiate a subclass of JFMotorcycle, the specific subclass
+// to be instatiated is dependant upon the argument passed in.
 - (JFMotorcycle*)instantiateMotorcycleOfType:(NSString*)type;
+
+// Used to return to (single) instance of the JFMotorcycleFactory
 + (JFMotorcycleFactory*)sharedInstance;
 
 @end

@@ -10,17 +10,28 @@
 
 @interface JFMotorcycle : NSObject
 
-@property (nonatomic, strong) NSString       * cc;
-@property (nonatomic, strong) NSNumber       * year;
-@property (nonatomic, strong) NSString       * make;
-@property (nonatomic, strong) NSString       * model;
-@property (nonatomic, strong) NSMutableArray * colorsAvailable;
-@property (nonatomic, strong) NSNumber       * totalAvailable;
+@property (nonatomic, strong, getter = getCc,
+                              setter = setCc:) NSString * cc;
+
+@property (nonatomic, strong, getter = getYear,
+                              setter = setYear:) NSNumber * year;
+
+@property (nonatomic, strong, getter = getMake,
+                              setter = setMake:) NSString * make;
+
+@property (nonatomic, strong, getter = getModel,
+                              setter = setModel:) NSString * model;
+
+@property (nonatomic, strong, getter = getColorsAvailable,
+                              setter = setColorsAvailable:) NSMutableArray * colorsAvailable;
+
+@property (nonatomic, strong, getter = getTotalAvailable,
+                              setter = setTotalAvailable:) NSNumber * totalAvailable;
 
 - (NSNumber*)updateStockWithSoldCount:(int)sold;
 - (NSString*)stringFromColorsAvailable;
 
-// Accessor/Mutator Methods (Not sure why we are having to write these manually when @synthesize does it for us??)
+// Overridden Accessor/Mutator Methods (Not sure why we are having to write these manually when @synthesize does it for us??)
 - (void)setCc:(NSString *)bikeCc;
 - (NSString*)getCc;
 

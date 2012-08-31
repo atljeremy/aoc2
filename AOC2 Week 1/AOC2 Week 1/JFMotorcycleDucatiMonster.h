@@ -13,6 +13,7 @@
 @property (nonatomic, strong, getter = getHasDucatiWarrenty, setter = setHasDucatiWarrenty:) NSNumber* hasDucatiWarrenty;
 @property (nonatomic, strong, getter = getDucatiWarrentyDescription, setter = setDucatiWarrentyDescription:) NSString* ducatiWarrentyDescription;
 
+// Overridden Accessor/Mutator Methods
 - (void)setHasDucatiWarrenty:(NSNumber *)yesno;
 - (void)setDucatiWarrentyDescription:(NSString *)description;
 

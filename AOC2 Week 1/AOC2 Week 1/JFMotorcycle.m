@@ -11,6 +11,8 @@
 @implementation JFMotorcycle
 @synthesize cc, colorsAvailable, make, model, year, totalAvailable;
 
+// Original implementation of this method. This method is overridden from within all 3 subclasses.
+// Determines how many bikes are available.
 - (NSNumber*)updateStockWithSoldCount:(int)sold {
     
     double totalSold          = [[NSNumber numberWithInt:sold] doubleValue];
@@ -20,6 +22,7 @@
     return nowAvailable;
 }
 
+// Creates a string from the colors available in the "colorsAvailable" array.
 - (NSString*)stringFromColorsAvailable {
     
     NSString* colors = @"";
@@ -41,42 +44,42 @@
     cc = bikeCc;
 }
 - (NSString*)getCc {
-    return self.cc;
+    return cc;
 }
 
 - (void)setYear:(NSNumber *)bikeYear {
     year = bikeYear;
 }
 - (NSNumber*)getYear {
-    return self.year;
+    return year;
 }
 
 - (void)setMake:(NSString *)bikeMake {
     make = bikeMake;
 }
 - (NSString*)getMake {
-    return self.make;
+    return make;
 }
 
 - (void)setModel:(NSString *)bikeModel {
     model = bikeModel;
 }
 - (NSString*)getModel {
-    return self.model;
+    return model;
 }
 
 - (void)setColorsAvailable:(NSMutableArray *)bikeColorsAvailable {
     colorsAvailable = bikeColorsAvailable;
 }
 - (NSMutableArray*)getColorsAvailable {
-    return self.colorsAvailable;
+    return colorsAvailable;
 }
 
 - (void)setTotalAvailable:(NSNumber *)bikeTotalAvailable {
     totalAvailable = bikeTotalAvailable;
 }
 - (NSNumber*)getTotalAvailable {
-    return self.totalAvailable;
+    return totalAvailable;
 }
 
 @end
