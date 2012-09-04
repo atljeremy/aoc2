@@ -12,28 +12,26 @@
 
 @property (weak, nonatomic) IBOutlet UITextField        *outputLabel;
 @property (weak, nonatomic) IBOutlet UISwitch           *onOffSwitch;
-@property (weak, nonatomic) IBOutlet UIButton           *plusButton;
-@property (weak, nonatomic) IBOutlet UIButton           *equalsButton;
-@property (weak, nonatomic) IBOutlet UIButton           *clearButton;
-@property (weak, nonatomic) IBOutlet UIButton           *zeroButton;
-@property (weak, nonatomic) IBOutlet UIButton           *oneButton;
-@property (weak, nonatomic) IBOutlet UIButton           *twoButton;
-@property (weak, nonatomic) IBOutlet UIButton           *threeButton;
-@property (weak, nonatomic) IBOutlet UIButton           *fourButton;
-@property (weak, nonatomic) IBOutlet UIButton           *fiveButton;
-@property (weak, nonatomic) IBOutlet UIButton           *sizButton;
-@property (weak, nonatomic) IBOutlet UIButton           *sevenButton;
-@property (weak, nonatomic) IBOutlet UIButton           *eightButton;
-@property (weak, nonatomic) IBOutlet UIButton           *nineButton;
 @property (weak, nonatomic) IBOutlet UILabel            *backgroundLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UIButton           *infobutton;
 
-- (IBAction)switchChanged:(id)sender;
 - (IBAction)plusButtonPressed:(id)sender;
 - (IBAction)equalsButtonPressed:(id)sender;
 - (IBAction)clearButtonPressed:(id)sender;
+- (IBAction)zeroPressed:(id)sender;
+- (IBAction)onePressed:(id)sender;
+- (IBAction)twoPressed:(id)sender;
+- (IBAction)threePressed:(id)sender;
+- (IBAction)fourPressed:(id)sender;
+- (IBAction)fivePressed:(id)sender;
+- (IBAction)sixPressed:(id)sender;
+- (IBAction)sevenPressed:(id)sender;
+- (IBAction)eightPressed:(id)sender;
+- (IBAction)ninePressed:(id)sender;
+
 - (IBAction)infoButtonPressed:(id)sender;
+- (IBAction)switchChanged:(id)sender;
 - (void)segmentChanged:(id)sender;
 
 @end
