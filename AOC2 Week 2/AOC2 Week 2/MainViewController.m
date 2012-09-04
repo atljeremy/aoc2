@@ -6,17 +6,22 @@
 //  Copyright (c) 2012 Jeremy Fox. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "MainViewController.h"
+#import "InfoViewController.h"
 
-#define kSegmentWhite 0
-#define kSegmentBlue  1
-#define kSegmentGreen 2
+#define kSegmentWhite  0
+#define kSegmentBlue   1
+#define kSegmentGreen  2
 
-@interface ViewController ()
+#define kPadding       20
+#define kLabelHeight   31
+#define kInfoLabelText @"Created By: Jeremy Fox"
+
+@interface MainViewController ()
 
 @end
 
-@implementation ViewController
+@implementation MainViewController
 @synthesize outputLabel;
 @synthesize onOffSwitch;
 @synthesize plusButton;
@@ -126,5 +131,9 @@
 }
 
 - (IBAction)infoButtonPressed:(id)sender {
+    
+    InfoViewController* infoVC = [[InfoViewController alloc] initWithNibName:@"InfoViewController" bundle:nil];
+    [self presentModalViewController:infoVC animated:YES];
 }
+
 @end

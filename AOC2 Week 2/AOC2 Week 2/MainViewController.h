@@ -8,13 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum {
-    JFBackgroundColorWhite,
-    JFBackgroundColorBlue,
-    JFBackgroundColorGreen
-} JFBackgroundColor;
-
-@interface ViewController : UIViewController
+@interface MainViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField        *outputLabel;
 @property (weak, nonatomic) IBOutlet UISwitch           *onOffSwitch;

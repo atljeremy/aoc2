@@ -13,8 +13,11 @@
 		3FA1B09115F591240052FAFD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3FA1B08F15F591240052FAFD /* InfoPlist.strings */; };
 		3FA1B09315F591240052FAFD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA1B09215F591240052FAFD /* main.m */; };
 		3FA1B09715F591240052FAFD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA1B09615F591240052FAFD /* AppDelegate.m */; };
-		3FA1B09A15F591240052FAFD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA1B09915F591240052FAFD /* ViewController.m */; };
-		3FA1B09D15F591240052FAFD /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA1B09B15F591240052FAFD /* ViewController.xib */; };
+		3FA1B09A15F591240052FAFD /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA1B09915F591240052FAFD /* MainViewController.m */; };
+		3FA1B09D15F591240052FAFD /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA1B09B15F591240052FAFD /* MainViewController.xib */; };
+		3FA1B0A515F59AAC0052FAFD /* JFCalculatorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA1B0A415F59AAC0052FAFD /* JFCalculatorManager.m */; };
+		3FA1B0AC15F624230052FAFD /* InfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FA1B0AA15F624230052FAFD /* InfoViewController.m */; };
+		3FA1B0AD15F624230052FAFD /* InfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FA1B0AB15F624230052FAFD /* InfoViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,9 +31,14 @@
 		3FA1B09415F591240052FAFD /* AOC2 Week 2-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AOC2 Week 2-Prefix.pch"; sourceTree = "<group>"; };
 		3FA1B09515F591240052FAFD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3FA1B09615F591240052FAFD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3FA1B09815F591240052FAFD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3FA1B09915F591240052FAFD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		3FA1B09C15F591240052FAFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
+		3FA1B09815F591240052FAFD /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		3FA1B09915F591240052FAFD /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		3FA1B09C15F591240052FAFD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainViewController.xib; sourceTree = "<group>"; };
+		3FA1B0A315F59AAC0052FAFD /* JFCalculatorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFCalculatorManager.h; sourceTree = "<group>"; };
+		3FA1B0A415F59AAC0052FAFD /* JFCalculatorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFCalculatorManager.m; sourceTree = "<group>"; };
+		3FA1B0A915F624230052FAFD /* InfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoViewController.h; sourceTree = "<group>"; };
+		3FA1B0AA15F624230052FAFD /* InfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoViewController.m; sourceTree = "<group>"; };
+		3FA1B0AB15F624230052FAFD /* InfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InfoViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,11 +85,8 @@
 		3FA1B08C15F591240052FAFD /* AOC2 Week 2 */ = {
 			isa = PBXGroup;
 			children = (
-				3FA1B09515F591240052FAFD /* AppDelegate.h */,
-				3FA1B09615F591240052FAFD /* AppDelegate.m */,
-				3FA1B09815F591240052FAFD /* ViewController.h */,
-				3FA1B09915F591240052FAFD /* ViewController.m */,
-				3FA1B09B15F591240052FAFD /* ViewController.xib */,
+				3FA1B0A715F59AC50052FAFD /* Application */,
+				3FA1B0A615F59AB60052FAFD /* Classes */,
 				3FA1B08D15F591240052FAFD /* Supporting Files */,
 			);
 			path = "AOC2 Week 2";
@@ -96,6 +101,46 @@
 				3FA1B09415F591240052FAFD /* AOC2 Week 2-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3FA1B0A615F59AB60052FAFD /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3FA1B0A815F59AD30052FAFD /* ViewControllers */,
+				3FA1B0A315F59AAC0052FAFD /* JFCalculatorManager.h */,
+				3FA1B0A415F59AAC0052FAFD /* JFCalculatorManager.m */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		3FA1B0A715F59AC50052FAFD /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				3FA1B09515F591240052FAFD /* AppDelegate.h */,
+				3FA1B09615F591240052FAFD /* AppDelegate.m */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		3FA1B0A815F59AD30052FAFD /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3FA1B09815F591240052FAFD /* MainViewController.h */,
+				3FA1B09915F591240052FAFD /* MainViewController.m */,
+				3FA1B09B15F591240052FAFD /* MainViewController.xib */,
+				3FA1B0AE15F624280052FAFD /* InfoView */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3FA1B0AE15F624280052FAFD /* InfoView */ = {
+			isa = PBXGroup;
+			children = (
+				3FA1B0A915F624230052FAFD /* InfoViewController.h */,
+				3FA1B0AA15F624230052FAFD /* InfoViewController.m */,
+				3FA1B0AB15F624230052FAFD /* InfoViewController.xib */,
+			);
+			name = InfoView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,7 +195,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FA1B09115F591240052FAFD /* InfoPlist.strings in Resources */,
-				3FA1B09D15F591240052FAFD /* ViewController.xib in Resources */,
+				3FA1B09D15F591240052FAFD /* MainViewController.xib in Resources */,
+				3FA1B0AD15F624230052FAFD /* InfoViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,7 +209,9 @@
 			files = (
 				3FA1B09315F591240052FAFD /* main.m in Sources */,
 				3FA1B09715F591240052FAFD /* AppDelegate.m in Sources */,
-				3FA1B09A15F591240052FAFD /* ViewController.m in Sources */,
+				3FA1B09A15F591240052FAFD /* MainViewController.m in Sources */,
+				3FA1B0A515F59AAC0052FAFD /* JFCalculatorManager.m in Sources */,
+				3FA1B0AC15F624230052FAFD /* InfoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,12 +226,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		3FA1B09B15F591240052FAFD /* ViewController.xib */ = {
+		3FA1B09B15F591240052FAFD /* MainViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				3FA1B09C15F591240052FAFD /* en */,
 			);
-			name = ViewController.xib;
+			name = MainViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
