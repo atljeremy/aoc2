@@ -8,6 +8,10 @@
 
 #import "ViewController.h"
 
+#define kSegmentWhite 0
+#define kSegmentBlue  1
+#define kSegmentGreen 2
+
 @interface ViewController ()
 
 @end
@@ -32,10 +36,16 @@
 @synthesize segmentedControl;
 @synthesize infobutton;
 
+#pragma mark - View Lifecycle
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    // Setup the action for the segmented controls "UIControlEventValueChanged"
+    [segmentedControl addTarget:self
+                         action:@selector(segmentChanged:)
+               forControlEvents:UIControlEventValueChanged];
 }
 
 - (void)viewDidUnload
@@ -67,6 +77,42 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+#pragma mark - Custom Methods
+
+- (void)segmentChanged:(id)sender {
+    
+    switch ([self.segmentedControl selectedSegmentIndex]) {
+        case kSegmentWhite:
+        {
+            [UIView animateWithDuration:0.5 animations:^{
+                [self.view setBackgroundColor:[UIColor whiteColor]];
+            }];
+            break;
+        }
+            
+        case kSegmentBlue:
+        {
+            [UIView animateWithDuration:0.5 animations:^{
+                [self.view setBackgroundColor:[UIColor blueColor]];
+            }];
+            break;
+        }
+            
+        case kSegmentGreen:
+        {
+            [UIView animateWithDuration:0.5 animations:^{
+                [self.view setBackgroundColor:[UIColor greenColor]];
+            }];
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
+
+#pragma mark - IBAction's
+
 - (IBAction)switchChanged:(id)sender {
 }
 
@@ -80,8 +126,5 @@
 }
 
 - (IBAction)infoButtonPressed:(id)sender {
-}
-
-- (IBAction)segmentChanged:(id)sender {
 }
 @end

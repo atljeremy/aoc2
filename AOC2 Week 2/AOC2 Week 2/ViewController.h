@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum {
+    JFBackgroundColorWhite,
+    JFBackgroundColorBlue,
+    JFBackgroundColorGreen
+} JFBackgroundColor;
+
 @interface ViewController : UIViewController
 
 @property (weak, nonatomic) IBOutlet UITextField        *outputLabel;
@@ -34,7 +40,6 @@
 - (IBAction)equalsButtonPressed:(id)sender;
 - (IBAction)clearButtonPressed:(id)sender;
 - (IBAction)infoButtonPressed:(id)sender;
-- (IBAction)segmentChanged:(id)sender;
-
+- (void)segmentChanged:(id)sender;
 
 @end
