@@ -20,8 +20,8 @@
 
 @interface MainViewController () {
     BOOL shouldClearOutput;
-    int  currentValue;
-    int  previousValue;
+    double  currentValue;
+    double  previousValue;
 }
     
 @end
@@ -32,6 +32,7 @@
 @synthesize backgroundLabel;
 @synthesize segmentedControl;
 @synthesize infobutton;
+@synthesize disabledView;
 
 #pragma mark - View Lifecycle
 
@@ -52,6 +53,7 @@
     [self setBackgroundLabel:nil];
     [self setSegmentedControl:nil];
     [self setInfobutton:nil];
+    [self setDisabledView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -61,71 +63,50 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
-#pragma mark - Custom Methods
-
-- (void)segmentChanged:(id)sender {
-    
-    switch ([self.segmentedControl selectedSegmentIndex]) {
-        case kSegmentWhite:
-        {
-            [UIView animateWithDuration:0.5 animations:^{
-                [self.view setBackgroundColor:[UIColor whiteColor]];
-            }];
-            break;
-        }
-            
-        case kSegmentBlue:
-        {
-            [UIView animateWithDuration:0.5 animations:^{
-                [self.view setBackgroundColor:[UIColor blueColor]];
-            }];
-            break;
-        }
-            
-        case kSegmentGreen:
-        {
-            [UIView animateWithDuration:0.5 animations:^{
-                [self.view setBackgroundColor:[UIColor greenColor]];
-            }];
-            break;
-        }
-            
-        default:
-            break;
-    }
-}
-
 #pragma mark - IBAction's
 
 - (IBAction)switchChanged:(id)sender {
+    if (self.onOffSwitch.on) {
+        [UIView animateWithDuration:0.5 animations:^{
+            self.disabledView.alpha = 0.0;
+        }
+        completion:^(BOOL finished){
+            if (finished) {
+                self.disabledView.hidden = YES;
+                [self reset];
+            }
+        }];
+    } else {
+        self.disabledView.hidden = NO;
+        [UIView animateWithDuration:0.5 animations:^{
+            self.disabledView.alpha = 0.7;
+        }];
+    }
 }
 
 - (IBAction)plusButtonPressed:(id)sender {
-    currentValue = [self.outputLabel.text intValue];
-    int sum      = [JFCalculatorManager calculateSumOfNumber:previousValue
+    currentValue = [self.outputLabel.text doubleValue];
+    double sum   = [JFCalculatorManager calculateSumOfNumber:previousValue
                                              andSecondNumber:currentValue
                                                  withOperand:kAdditionKey];
-    self.outputLabel.text = [NSString stringWithFormat:@"%d", sum];
+    self.outputLabel.text = [NSString stringWithFormat:@"%.01f", sum];
     previousValue         = sum;
     shouldClearOutput     = YES;
 }
 
 - (IBAction)equalsButtonPressed:(id)sender {
-    currentValue       = [self.outputLabel.text intValue];
-    int sum            = [JFCalculatorManager calculateSumOfNumber:previousValue
-                                                   andSecondNumber:currentValue
-                                                       withOperand:kAdditionKey];
-    self.outputLabel.text = [NSString stringWithFormat:@"%d", sum];
-    previousValue      = 0;
-    shouldClearOutput  = YES;
+    currentValue = [self.outputLabel.text doubleValue];
+    double sum   = [JFCalculatorManager calculateSumOfNumber:previousValue
+                                             andSecondNumber:currentValue
+                                                 withOperand:kAdditionKey];
+    self.outputLabel.text = [NSString stringWithFormat:@"%.01f", sum];
+    previousValue         = 0;
+    shouldClearOutput     = YES;
     
 }
 
 - (IBAction)clearButtonPressed:(id)sender {
-    self.outputLabel.text = @"0";
-    currentValue          = 0;
-    previousValue         = 0;
-    shouldClearOutput     = NO;
+    [self reset];
 }
 
 - (IBAction)infoButtonPressed:(id)sender {
@@ -172,6 +153,53 @@
 
 - (IBAction)ninePressed:(id)sender {
     [self setOutputLabelWithValue:@"9" shouldClearOutputLabel:shouldClearOutput];
+}
+
+#pragma mark - Custom Methods
+
+- (void)segmentChanged:(id)sender {
+    
+    switch ([self.segmentedControl selectedSegmentIndex]) {
+        case kSegmentWhite:
+        {
+            self.backgroundLabel.text = @"Background Color: White";
+            [UIView animateWithDuration:0.5 animations:^{
+                [self.view setBackgroundColor:[UIColor whiteColor]];
+                self.backgroundLabel.textColor = [UIColor blackColor];
+            }];
+            break;
+        }
+            
+        case kSegmentBlue:
+        {
+            self.backgroundLabel.text = @"Background Color: Blue";
+            [UIView animateWithDuration:0.5 animations:^{
+                [self.view setBackgroundColor:[UIColor blueColor]];
+                self.backgroundLabel.textColor = [UIColor whiteColor];
+            }];
+            break;
+        }
+            
+        case kSegmentGreen:
+        {
+            self.backgroundLabel.text = @"Background Color: Green";
+            [UIView animateWithDuration:0.5 animations:^{
+                [self.view setBackgroundColor:[UIColor greenColor]];
+                self.backgroundLabel.textColor = [UIColor blackColor];
+            }];
+            break;
+        }
+            
+        default:
+            break;
+    }
+}
+
+- (void)reset {
+    self.outputLabel.text = @"";
+    currentValue          = 0;
+    previousValue         = 0;
+    shouldClearOutput     = NO;
 }
 
 - (void)setOutputLabelWithValue:(NSString*)value shouldClearOutputLabel:(BOOL)clearLabel {

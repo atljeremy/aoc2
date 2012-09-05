@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel            *backgroundLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
 @property (weak, nonatomic) IBOutlet UIButton           *infobutton;
+@property (weak, nonatomic) IBOutlet UIView             *disabledView;
 
 - (IBAction)plusButtonPressed:(id)sender;
 - (IBAction)equalsButtonPressed:(id)sender;

@@ -10,11 +10,11 @@
 
 @implementation JFCalculatorManager
 
-+ (int)calculateSumOfNumber:(int)one andSecondNumber:(int)two withOperand:(int)operand
++ (double)calculateSumOfNumber:(double)one andSecondNumber:(double)two withOperand:(int)operand
 {
-    int sum;
-    int numberOne = one ? one : 0;
-    int numberTwo = two ? two : 0;
+    double sum;
+    double numberOne = one ? one : 0;
+    double numberTwo = two ? two : 0;
     
     switch (operand) {
         case kAdditionKey:

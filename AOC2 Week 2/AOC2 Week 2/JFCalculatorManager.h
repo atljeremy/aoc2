@@ -11,10 +11,10 @@
 #define kAdditionKey       0
 #define kSubtractionKey    1
 #define kMultiplicationKey 2
-#define kDivisionKey       4
+#define kDivisionKey       3
 
 @interface JFCalculatorManager : NSObject
 
-+ (int)calculateSumOfNumber:(int)one andSecondNumber:(int)two withOperand:(int)operand;
++ (double)calculateSumOfNumber:(double)one andSecondNumber:(double)two withOperand:(int)operand;
 
 @end
