@@ -10,6 +10,18 @@
 
 @interface JFMotorcycleDucatiMonster : JFMotorcycle
 
+/**
+ ******************************** REVISION ***************************************
+ * This is a new "unique" data member of this subclass that will be used in the
+ * overridden base class @method calculateShippingCost:(int)weight
+ ******************************** REVISION ***************************************
+ */
+@property (nonatomic, strong, getter = getDucatiMonsterWeight, setter = setDucatiMonsterWeight:) NSNumber* ducatiMonsterWeight;
+- (void)setDucatiMonsterWeight:(NSNumber*)weight;
+- (NSNumber*)getDucatiMonsterWeight;
+
+
+
 @property (nonatomic, strong, getter = getHasDucatiWarrenty, setter = setHasDucatiWarrenty:) NSNumber* hasDucatiWarrenty;
 @property (nonatomic, strong, getter = getDucatiWarrentyDescription, setter = setDucatiWarrentyDescription:) NSString* ducatiWarrentyDescription;
 

@@ -8,21 +8,54 @@
 
 #import "JFMotorcycleDucatiMonster.h"
 
-@implementation JFMotorcycleDucatiMonster
-@synthesize ducatiWarrentyDescription, hasDucatiWarrenty;
+#define kDucatiDealerFee 100.00
 
-// Overridden from superlass (JSMotorcyle)
-- (NSNumber*)updateStockWithSoldCount:(int)sold {
+@implementation JFMotorcycleDucatiMonster
+@synthesize ducatiMonsterWeight;
+@synthesize ducatiWarrentyDescription;
+@synthesize hasDucatiWarrenty;
+
+/**
+ * Overridden implementation of this method. Determines shipping cost from bike weight
+ *
+ ******************************** REVISION *****************************************
+ * This is a new method that will be overridden in each subclass and perform a
+ * calculation using a unique data member of each subclass, per a discussion
+ * with Alexia
+ ******************************** REVISION *****************************************
+ *
+ */
+- (NSNumber*)calculateShippingCost:(int)weight {
     
-    // Oh no! We were robbed! We lost 5 Ducati Monsters!
-    int stolenBikes = 5;
+    /**
+     * we are using a unique data member (self.ducatiMonsterWeight) in this subclass to determine the shipping cost
+     * but we have a check to ensure a @param wasn't passed in, if it was, it will supersede the data member
+     */
+    double bikeWeight;
+    if (weight > 0) {
+        bikeWeight = [[NSNumber numberWithInt:weight] doubleValue];
+    } else {
+        /**
+         * Here is where we are using this subclasses unique data member
+         */
+        bikeWeight = [self.ducatiMonsterWeight doubleValue];
+    }
     
-    double totalSold          = [[NSNumber numberWithInt:sold] doubleValue];
-    double currentlyAvailable = [self.totalAvailable doubleValue] - stolenBikes;
-    NSNumber * nowAvailable   = [NSNumber numberWithDouble:currentlyAvailable - totalSold];
+    double costPerPound = kCostPerPound;
     
-    return nowAvailable;
+    /**
+     * Here is what makes this overridden method become unique, we add in a "Ducati Dealer Fee" for each
+     * shipping cost calculation
+     */
+    double ducatiDealerFee = kDucatiDealerFee;
     
+    NSNumber * shippingCost = [NSNumber numberWithDouble:(bikeWeight * costPerPound) + ducatiDealerFee];
+    
+    return shippingCost;
+}
+
+- (void)setDucatiMonsterWeight:(NSNumber*)weight {
+    ducatiMonsterWeight = weight;
 }
 
 - (void)setHasDucatiWarrenty:(NSNumber *)yesno {
@@ -31,6 +64,10 @@
 
 - (void)setDucatiWarrentyDescription:(NSString *)description {
     ducatiWarrentyDescription = description;
+}
+
+- (NSNumber*)getDucatiMonsterWeight {
+    return ducatiMonsterWeight;
 }
 
 - (NSNumber*)getHasDucatiWarrenty {

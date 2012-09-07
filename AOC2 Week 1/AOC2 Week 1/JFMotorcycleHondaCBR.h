@@ -10,6 +10,18 @@
 
 @interface JFMotorcycleHondaCBR : JFMotorcycle
 
+/**
+ ******************************** REVISION ***************************************
+ * This is a new "unique" data member of this subclass that will be used in the
+ * overridden base class @method calculateShippingCost:(int)weight
+ ******************************** REVISION ***************************************
+ */
+@property (nonatomic, strong, getter = getHondaCBRWeight, setter = setHondaCBRWeight:) NSNumber* hondaCBRWeight;
+- (void)setHondaCBRWeight:(NSNumber*)weight;
+- (NSNumber*)getHondaCBRWeight;
+
+
+
 @property (nonatomic, strong, getter = getHasHondaWarrenty, setter = setHasHondaWarrenty:) NSNumber* hasHondaWarrenty;
 @property (nonatomic, strong, getter = getHondaWarrentyDescription, setter = setHondaWarrentyDescription:) NSString* hondaWarrentyDescription;
 

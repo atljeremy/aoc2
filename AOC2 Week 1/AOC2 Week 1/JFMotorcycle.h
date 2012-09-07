@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define kCostPerPound 0.65
+
 @interface JFMotorcycle : NSObject
 
 @property (nonatomic, strong, getter = getCc,
@@ -28,7 +30,7 @@
 @property (nonatomic, strong, getter = getTotalAvailable,
                               setter = setTotalAvailable:) NSNumber * totalAvailable;
 
-- (NSNumber*)updateStockWithSoldCount:(int)sold;
+- (NSNumber*)calculateShippingCost:(int)weight;
 - (NSString*)stringFromColorsAvailable;
 
 // Overridden Accessor/Mutator Methods (Not sure why we are having to write these manually when @synthesize does it for us??)

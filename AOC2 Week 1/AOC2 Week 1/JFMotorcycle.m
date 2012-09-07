@@ -9,17 +9,36 @@
 #import "JFMotorcycle.h"
 
 @implementation JFMotorcycle
-@synthesize cc, colorsAvailable, make, model, year, totalAvailable;
+@synthesize cc;
+@synthesize colorsAvailable;
+@synthesize year;
+@synthesize make;
+@synthesize model;
+@synthesize totalAvailable;
 
-// Original implementation of this method. This method is overridden from within all 3 subclasses.
-// Determines how many bikes are available.
-- (NSNumber*)updateStockWithSoldCount:(int)sold {
+/**
+ * Original implementation of this method. Determines shipping cost from bike weight
+ *
+ ******************************** REVISION *****************************************
+ * This is a new method that will be overridden in each subclass and perform a 
+ * calculation using a unique data member of each subclass, per a discussion 
+ * with Alexia
+ ******************************** REVISION *****************************************
+ *
+ */
+- (NSNumber*)calculateShippingCost:(int)weight {
     
-    double totalSold          = [[NSNumber numberWithInt:sold] doubleValue];
-    double currentlyAvailable = [self.totalAvailable doubleValue];
-    NSNumber * nowAvailable   = [NSNumber numberWithDouble:currentlyAvailable - totalSold];
+    /**
+     * Here in the base implementation, we will receive one @param which will be the bikes weight
+     *
+     * In the subclasses, we will be using a unique data member instead of passing in a 
+     * param to meet requirements for project
+     */
+    double bikeWeight       = [[NSNumber numberWithInt:weight] doubleValue];
+    double costPerPound     = kCostPerPound;
+    NSNumber * shippingCost = [NSNumber numberWithDouble:bikeWeight * costPerPound];
     
-    return nowAvailable;
+    return shippingCost;
 }
 
 // Creates a string from the colors available in the "colorsAvailable" array.

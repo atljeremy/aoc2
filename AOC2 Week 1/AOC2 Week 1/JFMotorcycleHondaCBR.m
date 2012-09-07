@@ -8,22 +8,55 @@
 
 #import "JFMotorcycleHondaCBR.h"
 
-@implementation JFMotorcycleHondaCBR
-@synthesize hondaWarrentyDescription, hasHondaWarrenty;
+#define kHondaIncentiveProgramReward -75.00 // This will subtract $75.00 from the total cost of shipping
 
-// Overridden from superlass (JSMotorcyle)
-- (NSNumber*)updateStockWithSoldCount:(int)sold {
+@implementation JFMotorcycleHondaCBR
+@synthesize hondaCBRWeight;
+@synthesize hondaWarrentyDescription;
+@synthesize hasHondaWarrenty;
+
+/**
+ * Overridden implementation of this method. Determines shipping cost from bike weight
+ *
+ ******************************** REVISION *****************************************
+ * This is a new method that will be overridden in each subclass and perform a
+ * calculation using a unique data member of each subclass, per a discussion
+ * with Alexia
+ ******************************** REVISION *****************************************
+ *
+ */
+- (NSNumber*)calculateShippingCost:(int)weight {
     
-    // YES! We just had a guy and 3 friends all buy a new Honda CBR at the last minute!
-    // We've better subtract those bikes from our inventory ASAP!
-    int lastMinuteSale = 4;
+    /**
+     * we are using a unique data member (self.hondaCBRWeight) in this subclass to determine the shipping cost
+     * but we have a check to ensure a @param wasn't passed in, if it was, it will supersede the data member
+     */
+    double bikeWeight;
+    if (weight > 0) {
+        bikeWeight = [[NSNumber numberWithInt:weight] doubleValue];
+    } else {
+        /**
+         * Here is where we are using this subclasses unique data member
+         */
+        bikeWeight = [self.hondaCBRWeight doubleValue];
+    }
+          
+    double costPerPound = kCostPerPound;
     
-    double totalSold          = [[NSNumber numberWithInt:sold] doubleValue] + lastMinuteSale;
-    double currentlyAvailable = [self.totalAvailable doubleValue];
-    NSNumber * nowAvailable   = [NSNumber numberWithDouble:currentlyAvailable - totalSold];
+    /**
+     * Here is what makes this overridden method become unique, We subtract the Honda Incentive Program
+     * Reward amount from the shipping cost
+     */
+    double hondaIncentiveProgramReward = kHondaIncentiveProgramReward;
     
-    return nowAvailable;
+    double currentShippingCost  = [[NSNumber numberWithDouble:bikeWeight * costPerPound] doubleValue];
+    NSNumber* totalShippingCost = [NSNumber numberWithDouble:currentShippingCost - hondaIncentiveProgramReward];
     
+    return totalShippingCost;
+}
+
+- (void)setHondaCBRWeight:(NSNumber*)weight {
+    hondaCBRWeight = weight;
 }
 
 - (void)setHasHondaWarrenty:(NSNumber *)yesno {
@@ -32,6 +65,10 @@
 
 - (void)setHondaWarrentyDescription:(NSString *)description {
     hondaWarrentyDescription = description;
+}
+
+- (NSNumber*)getHondaCBRWeight {
+    return hondaCBRWeight;
 }
 
 - (NSNumber*)getHasHondaWarrenty {

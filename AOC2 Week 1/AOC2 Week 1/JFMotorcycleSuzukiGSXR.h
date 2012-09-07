@@ -10,6 +10,18 @@
 
 @interface JFMotorcycleSuzukiGSXR : JFMotorcycle
 
+/**
+ ******************************** REVISION ***************************************
+ * This is a new "unique" data member of this subclass that will be used in the
+ * overridden base class @method calculateShippingCost:(int)weight
+ ******************************** REVISION ***************************************
+ */
+@property (nonatomic, strong, getter = getSuzukiGSXRWeight, setter = setSuzukiGSXRWeight:) NSNumber* suzukiGSXRWeight;
+- (void)setSuzukiGSXRWeight:(NSNumber*)weight;
+- (NSNumber*)getSuzukiGSXRWeight;
+
+
+
 @property (nonatomic, strong, getter = getHasSuzukiWarrenty, setter = setHasSuzukiWarrenty:) NSNumber* hasSuzukiWarrenty;
 @property (nonatomic, strong, getter = getSuzukiWarrentyDescription, setter = setSuzukiWarrentyDescription:) NSString* suzukiWarrentyDescription;
 

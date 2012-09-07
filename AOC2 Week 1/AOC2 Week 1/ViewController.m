@@ -46,12 +46,12 @@
     // class and the class itself.
     JFMotorcycleDucatiMonster* ducatiMoster = (JFMotorcycleDucatiMonster*)[[JFMotorcycleFactory sharedInstance] instantiateMotorcycleOfType:[NSStringFromClass([JFMotorcycleDucatiMonster class]) lowercaseString]];
     
-    self.ducatiOne.text = [NSString stringWithFormat:@"%@ - %@ %@ %@ %@'s Available",
-                           [ducatiMoster updateStockWithSoldCount:3],
+    self.ducatiOne.text = [NSString stringWithFormat:@"%@ %@ %@ %@ is $%.02f to ship",
                            ducatiMoster.getYear,
                            ducatiMoster.getCc,
                            ducatiMoster.getMake,
-                           ducatiMoster.getModel];
+                           ducatiMoster.getModel,
+                           [[ducatiMoster calculateShippingCost:0] doubleValue]]; // Passing 0 to ensure we use unique data member for calculation];
     self.ducatiTwo.text = [NSString stringWithFormat:@"%@", ducatiMoster.stringFromColorsAvailable];
     NSString* ducatiarrentyAvailable = [ducatiMoster.hasDucatiWarrenty boolValue] ? @"Yes" : @"No" ;
     self.ducatiThree.text = [NSString stringWithFormat:@"Warrenty Available: %@", ducatiarrentyAvailable];
@@ -62,12 +62,12 @@
     // class and the class itself.
     JFMotorcycleHondaCBR* hondaCBR = (JFMotorcycleHondaCBR*)[[JFMotorcycleFactory sharedInstance] instantiateMotorcycleOfType:[NSStringFromClass([JFMotorcycleHondaCBR class]) lowercaseString]];
     
-    self.hondaOne.text = [NSString stringWithFormat:@"%@ - %@ %@ %@ %@'s Available",
-                          [hondaCBR updateStockWithSoldCount:1],
+    self.hondaOne.text = [NSString stringWithFormat:@"%@ %@ %@ %@ is $%.02f to ship",
                           hondaCBR.getYear,
                           hondaCBR.getCc,
                           hondaCBR.getMake,
-                          hondaCBR.getModel];
+                          hondaCBR.getModel,
+                          [[hondaCBR calculateShippingCost:0] doubleValue]]; // Passing 0 to ensure we use unique data member for calculation
     self.hondaTwo.text = [NSString stringWithFormat:@"%@", hondaCBR.stringFromColorsAvailable];
     NSString* hondaWarrentyAvailable = [hondaCBR.hasHondaWarrenty boolValue] ? @"Yes" : @"No" ;
     self.hondaThree.text = [NSString stringWithFormat:@"Warrenty Available: %@", hondaWarrentyAvailable];
@@ -79,12 +79,12 @@
     // class and the class itself.
     JFMotorcycleSuzukiGSXR* suzukiGSXR = (JFMotorcycleSuzukiGSXR*)[[JFMotorcycleFactory sharedInstance] instantiateMotorcycleOfType:[NSStringFromClass([JFMotorcycleSuzukiGSXR class]) lowercaseString]];
     
-    self.suzukiOne.text = [NSString stringWithFormat:@"%@ - %@ %@ %@ %@'s Available",
-                           [suzukiGSXR updateStockWithSoldCount:5],
+    self.suzukiOne.text = [NSString stringWithFormat:@"%@ %@ %@ %@ is $%.02f to ship",
                            suzukiGSXR.getYear,
                            suzukiGSXR.getCc,
                            suzukiGSXR.getMake,
-                           suzukiGSXR.getModel];
+                           suzukiGSXR.getModel,
+                           [[suzukiGSXR calculateShippingCost:0] doubleValue]]; // Passing 0 to ensure we use unique data member for calculation
     self.suzukiTwo.text = [NSString stringWithFormat:@"%@", suzukiGSXR.stringFromColorsAvailable];
     NSString* suzukiWarrentyAvailable = [suzukiGSXR.hasSuzukiWarrenty boolValue] ? @"Yes" : @"No" ;
     self.suzukiThree.text = [NSString stringWithFormat:@"Warrenty Available: %@", suzukiWarrentyAvailable];
