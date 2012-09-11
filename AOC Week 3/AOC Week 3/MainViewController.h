@@ -10,6 +10,7 @@
 
 @interface MainViewController : UIViewController
 
+@property (strong, nonatomic) NSMutableDictionary* events;
 @property (weak, nonatomic) IBOutlet UITextView *eventsView;
 
 - (IBAction)addEvent:(id)sender;

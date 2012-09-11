@@ -7,25 +7,48 @@
 //
 
 #import "MainViewController.h"
+#import "AddEventViewController.h"
+#import "Event.h"
 
-@interface MainViewController ()
+@interface MainViewController () {
+    BOOL clearTextView;
+}
 
 @end
 
 @implementation MainViewController
 @synthesize eventsView;
+@synthesize events;
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    for (NSString* key in self.events) {
+        Event* event = [self.events objectForKey:key];
+        
+        if (clearTextView) {
+            self.eventsView.text = @"";
+            clearTextView = NO;
+        }
+        
+        self.eventsView.text = [self.eventsView.text stringByAppendingFormat:@"New Event: %@ \n %@ \n\n", event.event, event.date];
+    }
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    self.events   = [NSMutableDictionary dictionary];
+    clearTextView = YES;
 }
 
 - (void)viewDidUnload
 {
     [self setEventsView:nil];
+    [self setEvents:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -34,5 +57,6 @@
 }
 
 - (IBAction)addEvent:(id)sender {
+    [self presentModalViewController:[[AddEventViewController alloc] initWithNibName:@"AddEventViewController" bundle:nil andMainView:self] animated:YES];
 }
 @end

@@ -7,35 +7,52 @@
 //
 
 #import "AddEventViewController.h"
+#import "Event.h"
 
 @interface AddEventViewController ()
-
+@property (nonatomic, strong) MainViewController* mainVC;
 @end
 
 @implementation AddEventViewController
 @synthesize eventField;
+@synthesize datePicker;
+@synthesize mainVC;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+/**
+ * Custom init method that excepts a references to the main view so we can easily update its list of events
+ */
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andMainView:(MainViewController*)mainView
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.mainVC = mainView;
     }
     return self;
+}
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    /**
+     * We only want this class to be initialized using the custom init method, 
+     * so @throw and exception otherwise
+     */
+    @throw [NSException exceptionWithName:@"Invalid Initialization"
+                                   reason:@"AddEventViewController should only be initialized using custim init method - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil andMainView:(MainViewController*)mainView"
+                                 userInfo:nil];
+    return nil;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
 {
     [self setEventField:nil];
+    [self setMainVC:nil];
+    [self setDatePicker:nil];
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -44,8 +61,17 @@
 }
 
 - (IBAction)saveEvent:(id)sender {
+    
+    Event* event = [[Event alloc] init];
+    event.event = self.eventField.text ? self.eventField.text : @"No Event Entered!";
+    event.date  = [NSString stringWithFormat:@"%@", self.datePicker.date];
+    
+    [self.mainVC.events setValue:event forKey:[NSString stringWithFormat:@"%@+%@", event.event, event.date]];
+    
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)closeKeyboard:(id)sender {
+    [self.eventField resignFirstResponder];
 }
 @end

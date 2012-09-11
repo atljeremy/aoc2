@@ -17,6 +17,7 @@
 		3FEC23A815FED49C00307E06 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FEC23A615FED49C00307E06 /* MainViewController.xib */; };
 		3FEC23B315FED60200307E06 /* AddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC23B115FED60200307E06 /* AddEventViewController.m */; };
 		3FEC23B415FED60200307E06 /* AddEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FEC23B215FED60200307E06 /* AddEventViewController.xib */; };
+		3FEC23B815FEE07500307E06 /* Event.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC23B715FEE07500307E06 /* Event.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,8 @@
 		3FEC23B015FED60200307E06 /* AddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventViewController.h; sourceTree = "<group>"; };
 		3FEC23B115FED60200307E06 /* AddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventViewController.m; sourceTree = "<group>"; };
 		3FEC23B215FED60200307E06 /* AddEventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddEventViewController.xib; sourceTree = "<group>"; };
+		3FEC23B615FEE07500307E06 /* Event.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Event.h; sourceTree = "<group>"; };
+		3FEC23B715FEE07500307E06 /* Event.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Event.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +107,7 @@
 		3FEC23AE15FED5D300307E06 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3FEC23B515FEE05000307E06 /* Events */,
 				3FEC23AF15FED5DA00307E06 /* ViewControllers */,
 			);
 			name = Classes;
@@ -120,6 +124,15 @@
 				3FEC23B215FED60200307E06 /* AddEventViewController.xib */,
 			);
 			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		3FEC23B515FEE05000307E06 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				3FEC23B615FEE07500307E06 /* Event.h */,
+				3FEC23B715FEE07500307E06 /* Event.m */,
+			);
+			name = Events;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -190,6 +203,7 @@
 				3FEC23A215FED49C00307E06 /* AppDelegate.m in Sources */,
 				3FEC23A515FED49C00307E06 /* MainViewController.m in Sources */,
 				3FEC23B315FED60200307E06 /* AddEventViewController.m in Sources */,
+				3FEC23B815FEE07500307E06 /* Event.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
