@@ -15,6 +15,8 @@
 		3FEC23A215FED49C00307E06 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC23A115FED49C00307E06 /* AppDelegate.m */; };
 		3FEC23A515FED49C00307E06 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC23A415FED49C00307E06 /* MainViewController.m */; };
 		3FEC23A815FED49C00307E06 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FEC23A615FED49C00307E06 /* MainViewController.xib */; };
+		3FEC23B315FED60200307E06 /* AddEventViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC23B115FED60200307E06 /* AddEventViewController.m */; };
+		3FEC23B415FED60200307E06 /* AddEventViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FEC23B215FED60200307E06 /* AddEventViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,9 @@
 		3FEC23A315FED49C00307E06 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		3FEC23A415FED49C00307E06 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		3FEC23A715FED49C00307E06 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainViewController.xib; sourceTree = "<group>"; };
+		3FEC23B015FED60200307E06 /* AddEventViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddEventViewController.h; sourceTree = "<group>"; };
+		3FEC23B115FED60200307E06 /* AddEventViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddEventViewController.m; sourceTree = "<group>"; };
+		3FEC23B215FED60200307E06 /* AddEventViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddEventViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,11 +82,9 @@
 		3FEC239715FED49C00307E06 /* AOC Week 3 */ = {
 			isa = PBXGroup;
 			children = (
+				3FEC23AE15FED5D300307E06 /* Classes */,
 				3FEC23A015FED49C00307E06 /* AppDelegate.h */,
 				3FEC23A115FED49C00307E06 /* AppDelegate.m */,
-				3FEC23A315FED49C00307E06 /* MainViewController.h */,
-				3FEC23A415FED49C00307E06 /* MainViewController.m */,
-				3FEC23A615FED49C00307E06 /* MainViewController.xib */,
 				3FEC239815FED49C00307E06 /* Supporting Files */,
 			);
 			path = "AOC Week 3";
@@ -96,6 +99,27 @@
 				3FEC239F15FED49C00307E06 /* AOC Week 3-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3FEC23AE15FED5D300307E06 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				3FEC23AF15FED5DA00307E06 /* ViewControllers */,
+			);
+			name = Classes;
+			sourceTree = "<group>";
+		};
+		3FEC23AF15FED5DA00307E06 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3FEC23A315FED49C00307E06 /* MainViewController.h */,
+				3FEC23A415FED49C00307E06 /* MainViewController.m */,
+				3FEC23A615FED49C00307E06 /* MainViewController.xib */,
+				3FEC23B015FED60200307E06 /* AddEventViewController.h */,
+				3FEC23B115FED60200307E06 /* AddEventViewController.m */,
+				3FEC23B215FED60200307E06 /* AddEventViewController.xib */,
+			);
+			name = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,6 +175,7 @@
 			files = (
 				3FEC239C15FED49C00307E06 /* InfoPlist.strings in Resources */,
 				3FEC23A815FED49C00307E06 /* MainViewController.xib in Resources */,
+				3FEC23B415FED60200307E06 /* AddEventViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +189,7 @@
 				3FEC239E15FED49C00307E06 /* main.m in Sources */,
 				3FEC23A215FED49C00307E06 /* AppDelegate.m in Sources */,
 				3FEC23A515FED49C00307E06 /* MainViewController.m in Sources */,
+				3FEC23B315FED60200307E06 /* AddEventViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

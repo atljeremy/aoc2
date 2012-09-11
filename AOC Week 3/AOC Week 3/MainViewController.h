@@ -10,4 +10,7 @@
 
 @interface MainViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UITextView *eventsView;
+
+- (IBAction)addEvent:(id)sender;
 @end

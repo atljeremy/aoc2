@@ -13,6 +13,7 @@
 @end
 
 @implementation MainViewController
+@synthesize eventsView;
 
 - (void)viewDidLoad
 {
@@ -22,6 +23,7 @@
 
 - (void)viewDidUnload
 {
+    [self setEventsView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -31,4 +33,6 @@
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
 
+- (IBAction)addEvent:(id)sender {
+}
 @end
