@@ -62,9 +62,13 @@
 
 - (IBAction)saveEvent:(id)sender {
     
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMM dd, yyyy HH:mm:ss a"];
+    NSString *formattedDate = [formatter stringFromDate:self.datePicker.date];
+    
     Event* event = [[Event alloc] init];
     event.event = self.eventField.text.length > 0 ? self.eventField.text : @"No Event Entered!";
-    event.date  = [NSString stringWithFormat:@"%@", self.datePicker.date];
+    event.date  = formattedDate;
     
     [self.mainVC.events setValue:event forKey:[NSString stringWithFormat:@"%@+%@", event.event, event.date]];
     

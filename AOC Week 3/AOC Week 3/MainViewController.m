@@ -11,29 +11,37 @@
 #import "Event.h"
 
 @interface MainViewController ()
-
+@property (nonatomic, strong) NSMutableArray* eventsArray;
 @end
 
 @implementation MainViewController
 @synthesize eventsView;
 @synthesize events;
+@synthesize eventsArray;
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    // First, remove all previous text (events)
+    /**
+     * Check to see if we've added any events yet, if not, set to to placeholder.
+     * If we have, then clear the text view to prepare it for the new events.
+     */
     if (self.eventsView.text.length == 0) {
         self.eventsView.text = @"All The Events Go Here...";
     } else {
         self.eventsView.text = @"";
     }
     
-    // Then loop through events and add them one by one to the textview
-    for (NSString* key in self.events) {
+    /**
+     * Loop through events and add them one by one to the textview
+     */
+    for (NSString* key in [Event eventsSortedByDate:self.events]) {
         Event* event = [self.events objectForKey:key];
         
-        // Then set new text which includes new event
+        /**
+         * Then set new text which includes new event
+         */
         self.eventsView.text = [self.eventsView.text stringByAppendingFormat:@"New Event: %@ \n %@ \n\n", event.event, event.date];
     }
 }

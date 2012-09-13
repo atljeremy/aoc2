@@ -10,4 +10,18 @@
 
 @implementation Event
 
++ (NSArray*)eventsSortedByDate:(NSDictionary *)events {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MMM dd, yyyy HH:mm:ss a"];
+    NSComparator compareDates = ^(id event1, id event2) {
+        
+        NSDate *date1 = [formatter dateFromString:((Event*)event1).date];
+        NSDate *date2 = [formatter dateFromString:((Event*)event2).date];
+        
+        return [date1 compare:date2];
+    };
+    
+    return [events keysSortedByValueWithOptions:NSSortStable usingComparator:compareDates];
+}
+
 @end
