@@ -10,9 +10,7 @@
 #import "AddEventViewController.h"
 #import "Event.h"
 
-@interface MainViewController () {
-    BOOL clearTextView;
-}
+@interface MainViewController ()
 
 @end
 
@@ -24,14 +22,18 @@
 {
     [super viewWillAppear:animated];
     
+    // First, remove all previous text (events)
+    if (self.eventsView.text.length == 0) {
+        self.eventsView.text = @"All The Events Go Here...";
+    } else {
+        self.eventsView.text = @"";
+    }
+    
+    // Then loop through events and add them one by one to the textview
     for (NSString* key in self.events) {
         Event* event = [self.events objectForKey:key];
         
-        if (clearTextView) {
-            self.eventsView.text = @"";
-            clearTextView = NO;
-        }
-        
+        // Then set new text which includes new event
         self.eventsView.text = [self.eventsView.text stringByAppendingFormat:@"New Event: %@ \n %@ \n\n", event.event, event.date];
     }
 }
@@ -40,8 +42,7 @@
 {
     [super viewDidLoad];
     
-    self.events   = [NSMutableDictionary dictionary];
-    clearTextView = YES;
+    self.events = [NSMutableDictionary dictionary];
 }
 
 - (void)viewDidUnload
@@ -57,6 +58,8 @@
 }
 
 - (IBAction)addEvent:(id)sender {
-    [self presentModalViewController:[[AddEventViewController alloc] initWithNibName:@"AddEventViewController" bundle:nil andMainView:self] animated:YES];
+    [self presentModalViewController:[[AddEventViewController alloc] initWithNibName:@"AddEventViewController"
+                                                                              bundle:nil
+                                                                         andMainView:self] animated:YES];
 }
 @end

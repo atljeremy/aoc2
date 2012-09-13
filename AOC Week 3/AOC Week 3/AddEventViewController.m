@@ -63,7 +63,7 @@
 - (IBAction)saveEvent:(id)sender {
     
     Event* event = [[Event alloc] init];
-    event.event = self.eventField.text ? self.eventField.text : @"No Event Entered!";
+    event.event = self.eventField.text.length > 0 ? self.eventField.text : @"No Event Entered!";
     event.date  = [NSString stringWithFormat:@"%@", self.datePicker.date];
     
     [self.mainVC.events setValue:event forKey:[NSString stringWithFormat:@"%@+%@", event.event, event.date]];
@@ -72,6 +72,6 @@
 }
 
 - (IBAction)closeKeyboard:(id)sender {
-    [self.eventField resignFirstResponder];
+    [self dismissModalViewControllerAnimated:YES];
 }
 @end
