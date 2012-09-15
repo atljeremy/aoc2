@@ -45,6 +45,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    /**
+     * Restrict dates in the past
+     */
+    self.datePicker.minimumDate = [NSDate date];
 }
 
 - (void)viewDidUnload
@@ -76,6 +81,6 @@
 }
 
 - (IBAction)closeKeyboard:(id)sender {
-    [self dismissModalViewControllerAnimated:YES];
+    [self.eventField resignFirstResponder];
 }
 @end

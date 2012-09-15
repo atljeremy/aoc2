@@ -51,6 +51,7 @@
     [super viewDidLoad];
     
     self.events = [NSMutableDictionary dictionary];
+    self.eventsView.userInteractionEnabled = NO;
 }
 
 - (void)viewDidUnload
