@@ -51,6 +51,9 @@
      */
     self.datePicker.minimumDate = [NSDate date];
     
+    /**
+     * Per Rubric: The swipe left label triggers the date view to collect the event information and date picker info and close the date view.
+     */
     UISwipeGestureRecognizer* swiper = [[UISwipeGestureRecognizer alloc] initWithTarget:self
                                                                                  action:@selector(saveEvent:)];
     swiper.numberOfTouchesRequired = 1;
@@ -74,17 +77,21 @@
 
 - (void)saveEvent:(UIGestureRecognizer*)gestureRecognizer {
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MMM dd, yyyy HH:mm:ss a"];
-    NSString *formattedDate = [formatter stringFromDate:self.datePicker.date];
-    
-    Event* event = [[Event alloc] init];
-    event.event = self.eventField.text.length > 0 ? self.eventField.text : @"No Event Entered!";
-    event.date  = formattedDate;
-    
-    [self.mainVC.events setValue:event forKey:[NSString stringWithFormat:@"%@+%@", event.event, event.date]];
-    
-    [self dismissModalViewControllerAnimated:YES];
+    if ([self.eventField.text length] > 0) {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"MMM dd, yyyy HH:mm:ss a"];
+        NSString *formattedDate = [formatter stringFromDate:self.datePicker.date];
+        
+        Event* event = [[Event alloc] init];
+        event.event = self.eventField.text.length > 0 ? self.eventField.text : @"No Event Entered!";
+        event.date  = formattedDate;
+        
+        [self.mainVC.events setValue:event forKey:[NSString stringWithFormat:@"%@+%@", event.event, event.date]];
+        
+        [self dismissModalViewControllerAnimated:YES];
+    } else {
+        [[[JFNotificationView alloc] init] showNotificationWithMessage:@"Please Enter Event" inView:self.view dismissAfter:3.0];
+    }
 }
 
 - (IBAction)closeKeyboard:(id)sender {

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "MainViewController.h"
+#import "JFNotificationView.h"
 
 @interface AddEventViewController : UIViewController
 

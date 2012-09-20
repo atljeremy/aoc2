@@ -8,7 +8,12 @@
 
 #import "Event.h"
 
+#define kEventKey @"event"
+#define kDateKey  @"date"
+
 @implementation Event
+@synthesize event;
+@synthesize date;
 
 + (NSArray*)eventsSortedByDate:(NSDictionary *)events {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -22,6 +27,19 @@
     };
     
     return [events keysSortedByValueWithOptions:NSSortStable usingComparator:compareDates];
+}
+
+-(void)encodeWithCoder:(NSCoder *)encoder
+{
+    [encoder encodeObject:self.event forKey:kEventKey];
+    [encoder encodeObject:self.date  forKey:kDateKey];
+}
+
+-(id)initWithCoder:(NSCoder *)decoder
+{
+    self.event = [decoder decodeObjectForKey:kEventKey];
+    self.date  = [decoder decodeObjectForKey:kDateKey];
+    return self;
 }
 
 @end

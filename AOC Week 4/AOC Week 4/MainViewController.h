@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JFNotificationView.h"
 
 @interface MainViewController : UIViewController
 
@@ -40,6 +41,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *swipeLabel;
 
 /**
+ * Button used to clear all events
+ */
+@property (weak, nonatomic) IBOutlet UIButton *clearButton;
+
+/**
  * Method to initialize the AddEventViewController and present
  * it modally.
  */
@@ -49,4 +55,10 @@
  * IBAction method that will store all current text (Events) using NSUserDefaults
  */
 - (IBAction)saveData:(id)sender;
+
+/**
+ * IBAction method to simply clear all events in the list
+ */
+- (IBAction)clearEvents:(id)sender;
+
 @end

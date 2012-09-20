@@ -12,33 +12,63 @@
 #import <QuartzCore/QuartzCore.h>
 
 #define kStoredEvents @"storedEvents"
-
-@interface MainViewController ()
-@property (nonatomic, strong) UIView * notificationContainerView;
-@property (nonatomic, strong) UIView * notificationBGView;
-@property (nonatomic, strong) UILabel* messageLbl;
-@end
+#define kAllEventsGoHere @"All The Events Go Here..."
 
 @implementation MainViewController
 @synthesize eventsView;
 @synthesize events;
-@synthesize notificationContainerView;
-@synthesize notificationBGView;
-@synthesize messageLbl;
+@synthesize clearButton;
+@synthesize swipeLabel;
+
+
+
+/**
+ *
+ * PLEASE NOTE: I was unnsuccessful in getting the debugger to respect any of the method calls 
+ * to NSUserDefaults while in debug mode with break points set. I am not sure why it wouldn't 
+ * cooperate while debugging.
+ *
+ * However, if you launch the app using xcode, then click stop in xcode and return to the simulator 
+ * and re-launch the app using the app icon in the simulator, you will see that everything is working 
+ * as outlined in the rubric. All events are stored to NSUserDefaults and used after the app is killed 
+ * and re-launched. If you click the "Clear" button I added to the top left of the Main View, you'll 
+ * notice that all events will be deleted and the next time you launch the app all events will still be
+ * gone until you add new events and click "Save".
+ *
+ * I will outline all of this in my weekly video for project 4 and show examples in the screencast.
+ *
+ * If you have questions regarding anything please get with me before making any assumptions.
+ *
+ */
+
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    NSMutableDictionary* storedEvents = [[NSUserDefaults standardUserDefaults] objectForKey:kStoredEvents];
+    /**
+     * Per Rubric: During application load, the text entered into the textview is loaded back in and displayed using user defaults.
+     */
+    NSData *storedEventdata = [[NSUserDefaults standardUserDefaults] objectForKey:kStoredEvents];
+    NSMutableDictionary* storedEvents = [NSKeyedUnarchiver unarchiveObjectWithData:storedEventdata];
     if (storedEvents) {
+        
+        NSLog(@"Successfully Retreived Stored Events!");
+        
         // We had events stored in user defaults, so use those
         self.events = storedEvents;
     } else {
+        
+        NSLog(@"Didn't Find Any Events To Restore!");
+        
         // We didn't have any events stored in user defaults, so create a new dictionary for events
         self.events = [NSMutableDictionary dictionary];
     }
     
+    /**
+     * Per Rubric: The swipe right label triggers the date view to appear and is labeled appropriately.
+     */
     UISwipeGestureRecognizer* swiper = [[UISwipeGestureRecognizer alloc] initWithTarget:self
                                                                                  action:@selector(addEvent:)];
     swiper.numberOfTouchesRequired = 1;
@@ -54,10 +84,12 @@
      * Check to see if we've added any events yet, if not, set to to placeholder.
      * If we have, then clear the text view to prepare it for the new events.
      */
-    if (self.eventsView.text.length == 0) {
-        self.eventsView.text = @"All The Events Go Here...";
+    if (self.eventsView.text.length == 0 && [self.events count] == 0) {
+        self.eventsView.text = kAllEventsGoHere;
+        self.clearButton.hidden = YES;
     } else {
         self.eventsView.text = @"";
+        self.clearButton.hidden = NO;
     }
     
     /**
@@ -78,6 +110,7 @@
     [self setEventsView:nil];
     [self setEvents:nil];
     [self setSwipeLabel:nil];
+    [self setClearButton:nil];
     [super viewDidUnload];
 }
 
@@ -92,122 +125,24 @@
                                                                          andMainView:self] animated:YES];
 }
 
+- (IBAction)clearEvents:(id)sender {
+    self.eventsView.text = kAllEventsGoHere;
+    self.events = nil;
+    self.events = [NSMutableDictionary dictionary];
+    [[NSUserDefaults standardUserDefaults] removeObjectForKey:kStoredEvents];
+}
+
+/**
+ * Per Rubric: The save button creates an NSUserDefaults object and saves the text in the textview.
+ */
 - (IBAction)saveData:(id)sender {
     if (self.events && [self.events count] > 0) {
-        [[NSUserDefaults standardUserDefaults] setObject:self.events forKey:kStoredEvents];
-        [self showNotificationWithMessage:@"Saved Events!" dismissAfter:3.0];
-    }
-}
-
-- (void)showNotificationWithMessage:(NSString*)message dismissAfter:(NSInteger)delay{
-    
-    /**
-     * Create Notification Container View
-     */
-    CGRect containerFrame = CGRectMake((self.view.frame.size.width / 2) - 5,
-                                       (self.view.frame.size.height / 2) - 5,
-                                       10,
-                                       10);
-    
-    notificationContainerView = [[UIView alloc] initWithFrame:containerFrame];
-    
-    /**
-     * Create Notification BG View
-     */
-    CGRect containerContentFrame = CGRectMake(0,
-                                              0,
-                                              notificationContainerView.frame.size.width,
-                                              notificationContainerView.frame.size.height);
-    
-    notificationBGView                    = [[UIView alloc] initWithFrame:containerContentFrame];
-    notificationBGView.backgroundColor    = [UIColor blackColor];
-    notificationBGView.alpha              = 0.0;
-    notificationBGView.layer.cornerRadius = 10.0;
-    
-    
-    /**
-     * Create Notification Message Label
-     */
-    CGRect messageLblFrame = CGRectMake(containerContentFrame.origin.x,
-                                        (containerContentFrame.size.height / 2),
-                                        containerContentFrame.size.width,
-                                        0);
-    
-    messageLbl                 = [[UILabel alloc] initWithFrame:messageLblFrame];
-    messageLbl.textAlignment   = UITextAlignmentCenter;
-    messageLbl.backgroundColor = [UIColor clearColor];
-    messageLbl.textColor       = [UIColor whiteColor];
-    messageLbl.shadowColor     = [UIColor blackColor];
-    messageLbl.alpha           = 0.0;
-    messageLbl.font            = [UIFont fontWithName:@"MarkerFelt-Wide" size:20.0];
-    
-    if (message) {
-        messageLbl.text = message;
+        NSData *eventsData = [NSKeyedArchiver archivedDataWithRootObject:self.events];
+        [[NSUserDefaults standardUserDefaults] setObject:eventsData forKey:kStoredEvents];
+        [[[JFNotificationView alloc] init] showNotificationWithMessage:@"Saved Events!" inView:self.view dismissAfter:3.0];
     } else {
-        messageLbl.text = @"No Message Entered!";
+        [[[JFNotificationView alloc] init] showNotificationWithMessage:@"Add Event To Save" inView:self.view dismissAfter:3.0];
     }
-    
-    /**
-     * Add Subviews
-     */
-    [notificationContainerView addSubview:notificationBGView];
-    [notificationContainerView addSubview:messageLbl];
-    [self.view addSubview:notificationContainerView];
-    
-    [UIView animateWithDuration:0.5
-                     animations:^{
-                        notificationContainerView.frame = CGRectMake((self.view.frame.size.width / 2) - 75,
-                                                                     (self.view.frame.size.height / 2) - 75,
-                                                                     150,
-                                                                     150);
-                        
-                        notificationBGView.alpha = 0.7;
-                        notificationBGView.frame = CGRectMake(0,
-                                                              0,
-                                                              notificationContainerView.frame.size.width,
-                                                              notificationContainerView.frame.size.height);
-                        
-                        messageLbl.alpha = 1.0;
-                        messageLbl.frame = CGRectMake(0,
-                                                      (notificationContainerView.frame.size.height / 2) - 10,
-                                                      notificationContainerView.frame.size.width,
-                                                      20);
-                    }
-                    completion:^(BOOL finished){
-                        if (finished) {
-                                [self dismissNotificationWithDelay:delay];
-                        }
-                    }];
-}
-
-- (void)dismissNotificationWithDelay:(NSInteger)delay {
-    int64_t delayInSeconds = delay;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        [UIView animateWithDuration:0.5
-                         animations:^{
-                             notificationContainerView.frame = CGRectMake((self.view.frame.size.width / 2) - 5,
-                                                                          (self.view.frame.size.height / 2) - 5,
-                                                                          10,
-                                                                          10);
-                             notificationContainerView.alpha = 0.0;
-                             
-                             notificationBGView.frame = CGRectMake(0,
-                                                                   0,
-                                                                   notificationContainerView.frame.size.width,
-                                                                   notificationContainerView.frame.size.height);
-                             
-                             messageLbl.frame = CGRectMake(0,
-                                                           (notificationContainerView.frame.size.height / 2),
-                                                           notificationContainerView.frame.size.width,
-                                                           0);
-                         }
-                         completion:^(BOOL finished){
-                             if (finished) {
-                                 [notificationContainerView removeFromSuperview];
-                             }
-                         }];
-    });
 }
 
 @end

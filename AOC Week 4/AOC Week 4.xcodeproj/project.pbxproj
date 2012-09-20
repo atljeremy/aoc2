@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F7FDDC8160AAA7E001F9A76 /* JFNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3F7FDDC7160AAA7E001F9A76 /* JFNotificationView.m */; };
 		3F8D58701607FAD600F4D219 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F8D586F1607FAD600F4D219 /* UIKit.framework */; };
 		3F8D58721607FAD600F4D219 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F8D58711607FAD600F4D219 /* Foundation.framework */; };
 		3F8D58741607FAD600F4D219 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F8D58731607FAD600F4D219 /* CoreGraphics.framework */; };
@@ -24,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F7FDDC6160AAA7E001F9A76 /* JFNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFNotificationView.h; sourceTree = "<group>"; };
+		3F7FDDC7160AAA7E001F9A76 /* JFNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFNotificationView.m; sourceTree = "<group>"; };
 		3F8D586B1607FAD600F4D219 /* AOC Week 4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AOC Week 4.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F8D586F1607FAD600F4D219 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		3F8D58711607FAD600F4D219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -61,6 +64,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3F7FDDC4160AAA60001F9A76 /* JFNotificationView */ = {
+			isa = PBXGroup;
+			children = (
+				3F7FDDC6160AAA7E001F9A76 /* JFNotificationView.h */,
+				3F7FDDC7160AAA7E001F9A76 /* JFNotificationView.m */,
+			);
+			name = JFNotificationView;
+			sourceTree = "<group>";
+		};
 		3F8D58601607FAD600F4D219 = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +137,7 @@
 		3F8D58A81607FB9500F4D219 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3F7FDDC4160AAA60001F9A76 /* JFNotificationView */,
 				3F8D58A71607FB8A00F4D219 /* Events */,
 				3F8D58A91607FBA700F4D219 /* ViewControllers */,
 			);
@@ -216,6 +229,7 @@
 				3F8D589E1607FB7400F4D219 /* AddEventViewController.m in Sources */,
 				3F8D58A01607FB7400F4D219 /* Event.m in Sources */,
 				3F8D58A11607FB7400F4D219 /* MainViewController.m in Sources */,
+				3F7FDDC8160AAA7E001F9A76 /* JFNotificationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +339,7 @@
 				3F8D58911607FAD600F4D219 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
